@@ -2,6 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
-        <h2>保護犬・保護猫マッチングへようこそ</h2>
+        <h2>アニマルビレッジへようこそ</h2>
     </c:param>
 </c:import>

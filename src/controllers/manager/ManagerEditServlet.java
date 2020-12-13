@@ -40,7 +40,7 @@ public class ManagerEditServlet extends HttpServlet {
 
         request.setAttribute("manager", e);
         request.setAttribute("_token", request.getSession().getId());
-        request.getSession().setAttribute("parents_id", e.getId());
+        request.getSession().setAttribute("manager_id", e.getId());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/edit.jsp");
         rd.forward(request, response);

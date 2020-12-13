@@ -21,6 +21,22 @@
 <input type="password" name="password" />
 <br /><br />
 
+<label for="prefectures">都道府県</label><br />
+<input type="text" name="prefectures" value="${manager.prefectures}" />
+<br /><br />
+
+<label for="municipalities">市町村</label><br />
+<input type="text" name="municipalities" value="${manager.municipalities}" />
+<br /><br />
+
+<label for="phone">電話番号</label><br />
+<input type="text" name="phone" value="${manager.phone}" />
+<br /><br />
+
+<label for="email_address">メールアドレス</label><br />
+<input type="text" name="email_addres" value="${manager.email_address}" />
+<br /><br />
+
 <label for="admin_flag">権限</label><br />
 <select name="admin_flag">
     <option value="0"<c:if test="${manager.admin_flag == 0}"> selected</c:if>>管理者</option>

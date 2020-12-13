@@ -50,6 +50,10 @@ public class ManagerCreateServlet extends HttpServlet {
                         (String)this.getServletContext().getAttribute("pepper")
                     )
                 );
+            e.setPrefectures(request.getParameter("prefectures"));
+            e.setMunicipalities(request.getParameter("municipalities"));
+            e.setPhone(Integer.parseInt(request.getParameter("phone")));
+            e.setEmail_address(request.getParameter("email_address"));
             e.setAdmin_flag(Integer.parseInt(request.getParameter("admin_flag")));
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());

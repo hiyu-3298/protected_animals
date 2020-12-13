@@ -90,12 +90,12 @@ button {
     color: #721c24;
     background-color: #f8d7da;
 }
-table#parents_list th {
+table#manager_list th {
     width: 30%;
     padding: 10px 2%;
 }
 
-table#parents_list td {
+table#manager_list td {
     width: 29%;
     padding: 10px 2%;
 }

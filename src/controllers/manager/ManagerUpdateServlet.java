@@ -67,6 +67,10 @@ public class ManagerUpdateServlet extends HttpServlet {
             }
 
             e.setName(request.getParameter("name"));
+            e.setPrefectures(request.getParameter("prefectures"));
+            e.setMunicipalities(request.getParameter("municipalities"));
+            e.setPhone(Integer.parseInt(request.getParameter("phone")));
+            e.setEmail_address(request.getParameter("email_address"));
             e.setAdmin_flag(Integer.parseInt(request.getParameter("admin_flag")));
             e.setUpdated_at(new Timestamp(System.currentTimeMillis()));
             e.setDelete_flag(0);

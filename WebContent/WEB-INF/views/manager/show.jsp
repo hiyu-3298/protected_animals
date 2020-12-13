@@ -18,6 +18,21 @@
                             <td><c:out value="${manager.name}" /></td>
                         </tr>
                         <tr>
+                            <th>都道府県</th>
+                            <td><c:out value="${manager.prefectures}" /></td>
+                        </tr>
+                        <tr>
+                            <th>市町村</th>
+                            <td><c:out value="${manager.municipalities}" /></td>
+                        </tr>
+                        <tr>
+                            <th>電話番号</th>
+                            <td><c:out value="${manager.phone}" /></td>
+                        </tr><tr>
+                            <th>メールアドレス</th>
+                            <td><c:out value="${manager.email_address}" /></td>
+                        </tr>
+                        <tr>
                             <th>権限</th>
                             <td>
                                 <c:choose>

@@ -13,12 +13,16 @@
                 <tr>
                     <th>登録番号</th>
                     <th>氏名</th>
+                    <th>都道府県</th>
+                    <th>市町村</th>
                     <th>操作</th>
                 </tr>
                 <c:forEach var="manager" items="${manager}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${manager.code}" /></td>
                         <td><c:out value="${manager.name}" /></td>
+                        <td><c:out value="${manager.prefectures}" /></td>
+                        <td><c:out value="${manager.municipalities}" /></td>
                         <td>
                             <c:choose>
                                 <c:when test="${manager.delete_flag == 1}">

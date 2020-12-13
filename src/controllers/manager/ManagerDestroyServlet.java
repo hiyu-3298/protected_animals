@@ -36,7 +36,7 @@ public class ManagerDestroyServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Manager e = em.find(Manager.class, (Integer)(request.getSession().getAttribute("parents_id")));
+            Manager e = em.find(Manager.class, (Integer)(request.getSession().getAttribute("manager_id")));
             e.setDelete_flag(1);
             e.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 

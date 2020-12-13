@@ -3,15 +3,15 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
         <c:choose>
-            <c:when test="${parents != null}">
-                <h2>${parents.name} の里親情報　編集ページ</h2>
+            <c:when test="${manager != null}">
+                <h2>${manager.name} の管理者情報　編集ページ</h2>
                 <p>（パスワードは変更する場合のみ入力してください）</p>
-                <form method="POST" action="<c:url value='/parents/update' />">
+                <form method="POST" action="<c:url value='/manager/update' />">
                     <c:import url="_form.jsp" />
                 </form>
 
-                <p><a href="#" onclick="confirmDestroy();">この里親情報を削除する</a></p>
-                <form method="POST" action="<c:url value='/parents/destroy' />">
+                <p><a href="#" onclick="confirmDestroy();">この管理者情報を削除する</a></p>
+                <form method="POST" action="<c:url value='/manager/destroy' />">
                     <input type="hidden" name="_token" value="${_token}" />
                 </form>
                 <script>
@@ -27,6 +27,6 @@
             </c:otherwise>
         </c:choose>
 
-        <p><a href="<c:url value='/parents/index' />">一覧に戻る</a></p>
+        <p><a href="<c:url value='/manager/index' />">一覧に戻る</a></p>
     </c:param>
 </c:import>

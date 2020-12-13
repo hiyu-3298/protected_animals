@@ -7,25 +7,25 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>里親一覧</h2>
-        <table id="parents_list">
+        <h2>管理者一覧</h2>
+        <table id="manager_list">
             <tbody>
                 <tr>
                     <th>登録番号</th>
                     <th>氏名</th>
                     <th>操作</th>
                 </tr>
-                <c:forEach var="parents" items="${parents}" varStatus="status">
+                <c:forEach var="manager" items="${manager}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td><c:out value="${parents.code}" /></td>
-                        <td><c:out value="${parents.name}" /></td>
+                        <td><c:out value="${manager.code}" /></td>
+                        <td><c:out value="${manager.name}" /></td>
                         <td>
                             <c:choose>
-                                <c:when test="${parents.delete_flag == 1}">
+                                <c:when test="${manager.delete_flag == 1}">
                                     （削除済み）
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="<c:url value='/parents/show?id=${parents.id}' />">詳細を表示</a>
+                                    <a href="<c:url value='/manager/show?id=${manager.id}' />">詳細を表示</a>
                                 </c:otherwise>
                             </c:choose>
                         </td>
@@ -35,19 +35,19 @@
         </table>
 
         <div id="pagination">
-            （全 ${parents_count} 件）<br />
-            <c:forEach var="i" begin="1" end="${((parents_count - 1) / 15) + 1}" step="1">
+            （全 ${manager_count} 件）<br />
+            <c:forEach var="i" begin="1" end="${((manager_count - 1) / 15) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
                         <c:out value="${i}" />&nbsp;
                     </c:when>
                     <c:otherwise>
-                        <a href="<c:url value='/parents/index?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
+                        <a href="<c:url value='/manager/index?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/parents/new' />">里親の登録</a></p>
+        <p><a href="<c:url value='/manager/new' />">管理者の登録</a></p>
 
     </c:param>
 </c:import>

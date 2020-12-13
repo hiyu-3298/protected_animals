@@ -11,7 +11,7 @@
     <body>
         <div id = "wrapper">
             <div id = "header">
-                <h1>保護犬・保護猫マッチング</h1>
+                <h1><a href="<c:url value='/manager/index' />">保護犬・保護猫マッチング</a></h1>
             </div>
             <div id = "content">
                 ${param.content}

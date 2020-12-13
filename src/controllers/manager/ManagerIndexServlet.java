@@ -1,4 +1,4 @@
-package controllers.parents;
+package controllers.manager;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Parents;
+import models.Manager;
 import utils.DBUtil;
 
 /**
  * Servlet implementation class ParentsIndexServlet
  */
-@WebServlet("/parents/index")
-public class ParentsIndexServlet extends HttpServlet {
+@WebServlet("/manager/index")
+public class ManagerIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ParentsIndexServlet() {
+    public ManagerIndexServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,22 +42,22 @@ public class ParentsIndexServlet extends HttpServlet {
 
         }
 
-        List<Parents> parents = em.createNamedQuery("getAllParents",Parents.class).setFirstResult(15 * (page - 1))
+        List<Manager> parents = em.createNamedQuery("getAllManager",Manager.class).setFirstResult(15 * (page - 1))
                 .setMaxResults(15).getResultList();
 
-        long parents_count = (long)em.createNamedQuery("getParentsCount",Long.class).getSingleResult();
+        long manager_count = (long)em.createNamedQuery("getManagerCount",Long.class).getSingleResult();
 
         em.close();
 
-        request.setAttribute("parents", parents);
-        request.setAttribute("parents_count", parents_count);
+        request.setAttribute("manager", parents);
+        request.setAttribute("manager_count", manager_count);
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null){
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/parents/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/index.jsp");
         rd.forward(request, response);
     }
 

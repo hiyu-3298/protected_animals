@@ -1,4 +1,4 @@
-package controllers.parents;
+package controllers.manager;
 
 import java.io.IOException;
 
@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Parents;
+import models.Manager;
 
 /**
  * Servlet implementation class ParentsNewServlet
  */
-@WebServlet("/parents/new")
-public class ParentsNewServlet extends HttpServlet {
+@WebServlet("/manager/new")
+public class ManagerNewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ParentsNewServlet() {
+    public ManagerNewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,9 +31,9 @@ public class ParentsNewServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("_token", request.getSession().getId());
-        request.setAttribute("parents", new Parents());
+        request.setAttribute("parents", new Manager());
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/parents/new.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/new.jsp");
         rd.forward(request, response);
     }
 

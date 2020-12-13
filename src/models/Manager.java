@@ -11,32 +11,52 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "parents")
+@Table(name = "manager")
 @NamedQueries({
     @NamedQuery(
-            name = "getAllParents",
-            query = "SELECT e FROM Parents AS e ORDER BY e.id DESC"
+            name = "getAllManager",
+            query = "SELECT e FROM Manager AS e ORDER BY e.id DESC"
             ),
     @NamedQuery(
-            name = "getParentsCount",
-            query = "SELECT COUNT(e) FROM Parents AS e"
-            )
+            name = "getManagerCount",
+            query = "SELECT COUNT(e) FROM Manager AS e"
+            ),
+    @NamedQuery(
+            name = "checkRegisteredCode",
+            query = "SELECT COUNT(e) FROM Manager AS e WHERE e.code = :code"
+            ),
+    @NamedQuery(
+            name = "checkLoginCodeAndPassword",
+            query = "SELECT e FROM Manager AS e WHERE e.delete_flag = 0 AND e.code = :code AND e.password = :pass")
 })
 @Entity
-public class Parents {
+
+public class Manager {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "email_address", nullable = false, unique = true)
-    private String email_address;
+    @Column(name = "code", nullable = false, unique = true)
+    private String code;//管理者番号
 
     @Column(name = "name", nullable = false)
-    private String name;
+    private String name;//管理者名・施設名
 
     @Column(name = "password", length = 64, nullable = false)
     private String password;
+
+    @Column(name = "Prefectures", nullable = false)
+    private String prefectures;//都道府県
+
+    @Column(name = "Municipalities", nullable = false)
+    private String municipalities;//市町村
+
+    @Column(name = "Phone")
+    private Integer phone;//電話番号
+
+    @Column(name = "email_address")
+    private String email_address;//メールアドレス
 
     @Column(name = "admin_flag", nullable = false)
     private Integer admin_flag;
@@ -59,11 +79,11 @@ public class Parents {
     }
 
     public String getCode() {
-        return email_address;
+        return code;
     }
 
     public void setCode(String code) {
-        this.email_address = email_address;
+        this.code = code;
     }
 
     public String getName() {
@@ -80,6 +100,38 @@ public class Parents {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPrefectures() {
+        return prefectures;
+    }
+
+    public void setPrefectures(String prefectures) {
+        this.prefectures = prefectures;
+    }
+
+    public String getMunicipalities() {
+        return municipalities;
+    }
+
+    public void setMunicipalities(String municipalities) {
+        this.municipalities = municipalities;
+    }
+
+    public Integer getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail_address() {
+        return email_address;
+    }
+
+    public void setEmail_address(String email_address) {
+        this.email_address = email_address;
     }
 
     public Integer getAdmin_flag() {

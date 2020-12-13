@@ -1,4 +1,4 @@
-package controllers.parents;
+package controllers.manager;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Parents;
-import models.validators.ParentsValidator;
+import models.Manager;
+import models.validators.ManagerValidator;
 import utils.DBUtil;
 import utils.EncryptUtil;
 
 /**
  * Servlet implementation class ParentsUpdateServlet
  */
-@WebServlet("/parents/update")
-public class ParentsUpdateServlet extends HttpServlet {
+@WebServlet("/manager/update")
+public class ManagerUpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ParentsUpdateServlet() {
+    public ManagerUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,7 +40,7 @@ public class ParentsUpdateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Parents e = em.find(Parents.class, (Integer)(request.getSession().getAttribute("parents_id")));
+            Manager e = em.find(Manager.class, (Integer)(request.getSession().getAttribute("manager_id")));
 
             // 現在の値と異なる登録番号が入力されていたら
             // 重複チェックを行う指定をする
@@ -71,15 +71,15 @@ public class ParentsUpdateServlet extends HttpServlet {
             e.setUpdated_at(new Timestamp(System.currentTimeMillis()));
             e.setDelete_flag(0);
 
-            List<String> errors = ParentsValidator.validate(e, codeDuplicateCheckFlag, passwordCheckFlag);
+            List<String> errors = ManagerValidator.validate(e, codeDuplicateCheckFlag, passwordCheckFlag);
             if(errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("parents", e);
+                request.setAttribute("manager", e);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/parents/edit.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/edit.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
@@ -87,9 +87,9 @@ public class ParentsUpdateServlet extends HttpServlet {
                 em.close();
                 request.getSession().setAttribute("flush", "更新が完了しました。");
 
-                request.getSession().removeAttribute("parents_id");
+                request.getSession().removeAttribute("manager_id");
 
-                response.sendRedirect(request.getContextPath() + "/parents/index");
+                response.sendRedirect(request.getContextPath() + "/manager/index");
             }
         }
     }

@@ -10,11 +10,11 @@
     </div>
 </c:if>
 <label for="code">登録番号</label><br />
-<input type="text" name="code" value="${parents.code}" />
+<input type="text" name="code" value="${manager.code}" />
 <br /><br />
 
 <label for="name">氏名</label><br />
-<input type="text" name="name" value="${parents.name}" />
+<input type="text" name="name" value="${manager.name}" />
 <br /><br />
 
 <label for="password">パスワード</label><br />
@@ -23,8 +23,8 @@
 
 <label for="admin_flag">権限</label><br />
 <select name="admin_flag">
-    <option value="0"<c:if test="${parents.admin_flag == 0}"> selected</c:if>>応募者</option>
-    <option value="1"<c:if test="${parents.admin_flag == 1}"> selected</c:if>>施設者</option>
+    <option value="0"<c:if test="${manager.admin_flag == 0}"> selected</c:if>>管理者</option>
+    <option value="1"<c:if test="${manager.admin_flag == 1}"> selected</c:if>>スーパー管理者</option>
 </select>
 <br /><br />
 

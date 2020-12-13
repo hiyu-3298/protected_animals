@@ -3,6 +3,7 @@
     <persistence-unit name="protected_animals" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>models.Parents</class>
+        <class>models.Manager</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>

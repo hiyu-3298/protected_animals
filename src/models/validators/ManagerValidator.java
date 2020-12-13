@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import models.Parents;
+import models.Manager;
 import utils.DBUtil;
 
-public class ParentsValidator {
-    public static List<String> validate(Parents e,Boolean codeDuplicateCheckFlag,Boolean passwordCheckFlag){
+public class ManagerValidator {
+    public static List<String> validate(Manager e,Boolean codeDuplicateCheckFlag,Boolean passwordCheckFlag){
         List<String> errors = new ArrayList<String>();
 
         String code_error = validateCode(e.getCode(),codeDuplicateCheckFlag);
@@ -38,11 +38,11 @@ public class ParentsValidator {
         //すでに登録されている番号との重複チェック
         if(codeDuplicateCheckFlag){
             EntityManager em = DBUtil.createEntityManager();
-            long parents_count = (long)em.createNamedQuery("checkRegisteredCode",Long.class)
+            long manager_count = (long)em.createNamedQuery("checkRegisteredCode",Long.class)
                     .setParameter("code",code)
                     .getSingleResult();
             em.close();
-            if(parents_count > 0){
+            if(manager_count > 0){
                 return "入力された登録番号はすでに登録されています。";
             }
 

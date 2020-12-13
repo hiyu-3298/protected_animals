@@ -1,4 +1,4 @@
-package controllers.parents;
+package controllers.manager;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Parents;
-import models.validators.ParentsValidator;
+import models.Manager;
+import models.validators.ManagerValidator;
 import utils.DBUtil;
 import utils.EncryptUtil;
 
 /**
  * Servlet implementation class ParentsCreateServlet
  */
-@WebServlet("/parents/create")
-public class ParentsCreateServlet extends HttpServlet {
+@WebServlet("/manager/create")
+public class ManagerCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ParentsCreateServlet() {
+    public ManagerCreateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,7 +40,7 @@ public class ParentsCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Parents e = new Parents();
+            Manager e = new Manager();
 
             e.setCode(request.getParameter("code"));
             e.setName(request.getParameter("name"));
@@ -57,15 +57,15 @@ public class ParentsCreateServlet extends HttpServlet {
             e.setUpdated_at(currentTime);
             e.setDelete_flag(0);
 
-            List<String> errors = ParentsValidator.validate(e, true, true);
+            List<String> errors = ManagerValidator.validate(e, true, true);
             if(errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("parents", e);
+                request.setAttribute("manager", e);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/parents/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/new.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
@@ -74,7 +74,7 @@ public class ParentsCreateServlet extends HttpServlet {
                 request.getSession().setAttribute("flush", "登録が完了しました。");
                 em.close();
 
-                response.sendRedirect(request.getContextPath() + "/parents/index");
+                response.sendRedirect(request.getContextPath() + "/manager/index");
             }
         }
     }

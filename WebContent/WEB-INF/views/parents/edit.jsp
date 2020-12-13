@@ -4,7 +4,7 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${parents != null}">
-                <h2>id : ${parents.name} の里親情報　編集ページ</h2>
+                <h2>${parents.name} の里親情報　編集ページ</h2>
                 <p>（パスワードは変更する場合のみ入力してください）</p>
                 <form method="POST" action="<c:url value='/parents/update' />">
                     <c:import url="_form.jsp" />

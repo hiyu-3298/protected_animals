@@ -11,7 +11,21 @@
     <body>
         <div id = "wrapper">
             <div id = "header">
-                <h1>保護犬・保護猫マッチング</h1>
+                <div id="header_menu">
+                    <h1><a href="<c:url value='/' />">保護犬・保護猫マッチング</a></h1>&nbsp;&nbsp;&nbsp;
+                    <c:if test="${sessionScope.login_manager != null}">
+                        <c:if test="${sessionScope.login_manager.admin_flag == 1}">
+                            <a href="<c:url value='/manager/index' />">管理者一覧</a>&nbsp;
+                        </c:if>
+                        <a href="<c:url value='/animals/index' />">動物一覧</a>&nbsp;
+                    </c:if>
+                </div>
+                <c:if test="${sessionScope.login_manager != null}">
+                    <div id="manager_name">
+                        <c:out value="${sessionScope.login_manager.name}" />&nbsp;さん&nbsp;&nbsp;&nbsp;
+                        <a href="<c:url value='/logout' />">ログアウト</a>
+                    </div>
+                </c:if>
             </div>
             <div id = "content">
                 ${param.content}

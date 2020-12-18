@@ -40,7 +40,7 @@ public class Animals {
     @Column(name = "animals_date", nullable = false)
     private Date report_date;
 
-    @Column(name = "name", length = 255, nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "sex", nullable = false)

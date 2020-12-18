@@ -38,7 +38,7 @@ public class Animals {
     private Manager manager;
 
     @Column(name = "animals_date", nullable = false)
-    private Date report_date;
+    private Date animals_date;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -107,12 +107,12 @@ public class Animals {
         this.updated_at = updated_at;
     }
 
-    public Date getReport_date() {
-        return report_date;
+    public Date getAnimals_date() {
+        return animals_date;
     }
 
-    public void setReport_date(Date report_date) {
-        this.report_date = report_date;
+    public void setAnimals_date(Date animals_date) {
+        this.animals_date = animals_date;
     }
 
     public String getContent() {

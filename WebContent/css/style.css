@@ -148,3 +148,6 @@ table#animals_list .animals_title {
 table#animals_list .animals_action {
     width: 13%;
 }
+pre {
+    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+}

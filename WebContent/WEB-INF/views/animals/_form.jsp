@@ -14,8 +14,12 @@
 <input type="date" name="animals_date" value="<fmt:formatDate value='${animals.animals_date}' pattern='yyyy-MM-dd' />" />
 <br /><br />
 
-<label for="name">名前</label><br />
+<label for="manager">管理者</label><br />
 <c:out value="${sessionScope.login_manager.name}" />
+<br /><br />
+
+<label for="name">名前</label><br />
+<input type="text" name="name" value="${animals.name}" />
 <br /><br />
 
 <label for="sex">性別</label><br />

@@ -8,6 +8,7 @@
                 <form method="POST" action="<c:url value='/animals/update' />">
                     <c:import url="_form.jsp" />
                 </form>
+
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>

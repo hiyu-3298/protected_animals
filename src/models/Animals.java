@@ -19,12 +19,20 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
         name = "getAllAnimals",
-        query = "SELECT r FROM Animals AS r ORDER BY r.id DESC"
+        query = "SELECT a FROM Animals AS a ORDER BY a.id DESC"
     ),
     @NamedQuery(
         name = "getAnimalsCount",
-        query = "SELECT COUNT(r) FROM Animals AS r"
+        query = "SELECT COUNT(a) FROM Animals AS a"
     ),
+    @NamedQuery(
+            name = "getMyAllAnimals",
+            query = "SELECT a FROM Animals AS a WHERE a.manager = :manager ORDER BY a.id DESC"
+        ),
+        @NamedQuery(
+            name = "getMyAnimalsCount",
+            query = "SELECT COUNT(a) FROM Animals AS a WHERE a.manager = :manager"
+        )
 })
 @Entity
 public class Animals {
@@ -130,4 +138,5 @@ public class Animals {
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
+
 }

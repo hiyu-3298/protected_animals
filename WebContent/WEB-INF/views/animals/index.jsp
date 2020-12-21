@@ -19,7 +19,7 @@
                 </tr>
                 <c:forEach var="animals" items="${animals}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td class="animals_name"><c:out value="${animals.manager.name}" /></td>
+                        <td class="animals_name"><c:out value="${animals.name}" /></td>
                         <td class="animals_date"><fmt:formatDate value='${animals.animals_date}' pattern='yyyy-MM-dd' /></td>
                         <td class="animals_sex">${animals.sex}</td>
                         <td class="animals_action"><a href="<c:url value='/animals/show?id=${animals.id}' />">詳細を見る</a></td>
